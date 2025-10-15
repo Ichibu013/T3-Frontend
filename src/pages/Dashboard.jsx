@@ -9,7 +9,7 @@ export default function Dashboard({data}) {
 
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-5 w-236">
             <h2 className="text-3xl font-extrabold text-gray-900">CRM Overview</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -233,7 +233,7 @@ const App = () => {
             <main className="flex-1 flex flex-col overflow-hidden w-full">
 
                 {/* Header */}
-                <header className="flex items-center justify-between p-4 bg-white shadow-md z-10 sticky top-0">
+                <header className="flex items-center justify-between px-4 py-3 bg-white shadow-md z-10 sticky top-0">
                     <button
                         className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
                         onClick={() => setIsSidebarOpen(true)}

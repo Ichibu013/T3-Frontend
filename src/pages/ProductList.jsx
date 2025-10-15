@@ -12,7 +12,7 @@ export default function ProductsList({products, setPage, selectEntity, deletePro
     }, [products, searchTerm]);
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-5 w-236">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-3xl font-extrabold text-gray-900">Product Catalog</h2>
                 <button onClick={() => {

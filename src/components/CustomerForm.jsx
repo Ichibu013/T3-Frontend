@@ -19,30 +19,32 @@ export default function CustomerForm ({ initialData, onSave, onCancel, isNew = f
     onSave(formData);
   };
 
+  const LABEL_STYLE = "block text-sm font-medium text-gray-700";
+  const INPUT_STYLE = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg max-w-lg mx-auto">
       <h3 className="text-2xl font-bold mb-6 text-gray-800">{isNew ? 'Add New Customer' : `Edit Customer: ${initialData.name}`}</h3>
       {error && <p className="text-red-500 mb-4 bg-red-100 p-2 rounded">{error}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+          <label htmlFor="name" className={LABEL_STYLE}>Name</label>
           <input type="text" name="name" id="name" value={formData.name} onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" required />
+            className={INPUT_STYLE} required />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (Backend Key)</label>
+          <label htmlFor="email" className={LABEL_STYLE}>Email (Backend Key)</label>
           <input type="email" name="email" id="email" value={formData.email} onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" required />
+            className={INPUT_STYLE}  required />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+          <label htmlFor="phone" className={LABEL_STYLE}>Phone</label>
           <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+            className={INPUT_STYLE} />
         </div>
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
+          <label htmlFor="city" className={LABEL_STYLE}>City</label>
           <input type="text" name="city" id="city" value={formData.city} onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+            className={INPUT_STYLE} />
         </div>
         <div className="flex justify-end space-x-3 pt-4">
           <button type="button" onClick={onCancel}

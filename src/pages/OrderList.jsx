@@ -1,7 +1,7 @@
 // 8. Orders List Page (Dynamic Page View 8)
 export default function OrdersList ({ orders, setPage, selectEntity }){
     return (
-        <div className="space-y-6">
+        <div className="space-y-5 w-236">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Recent Orders</h2>
             
             <div className="bg-white rounded-xl shadow-lg overflow-x-auto">

@@ -4,7 +4,7 @@ export default function CustomerView({customer, setPage, updateCustomer, data}) 
     const customerOrders = data.getCustomerOrders(customer.id);
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-5 w-236">
             <button onClick={() => setPage('customers')}
                     className="flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4">
                 <ArrowLeft className="w-4 h-4 mr-2"/> Back to Customers

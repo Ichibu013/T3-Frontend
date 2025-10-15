@@ -12,7 +12,7 @@ export default function CustomersList ({ customers, setPage, selectEntity, delet
     }, [customers, searchTerm]);
   
     return (
-      <div className="space-y-6">
+      <div className="space-y-5 w-236">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-extrabold text-gray-900">Customer Management</h2>
           <button onClick={() => setPage('customer-add')}
