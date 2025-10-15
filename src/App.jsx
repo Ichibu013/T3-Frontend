@@ -5,7 +5,7 @@ import { LayoutDashboard } from 'lucide-react';
 import Dashboard from './pages/Dashboard';
 import CustomersList from './pages/CustomerList';
 import CustomerView from './pages/CustomerView';
-import CustomerForm from './components/CustomerFrom';
+import CustomerForm from './components/CustomerForm';
 import ProductsList from './pages/ProductList';
 import ProductView from './pages/ProductView';
 import ProductForm from './components/ProductForm';
