@@ -3,7 +3,7 @@ import {CheckCircle} from "lucide-react";
 
 export default function SettingsPage() {
     return (
-        <div className="space-y-5 w-236">
+        <div className="space-y-5 ">
             <h2 className="text-3xl font-extrabold text-gray-900">Application Settings</h2>
             <div className="bg-white p-6 rounded-xl shadow-lg max-w-full">
                 <h3 className="text-xl text-gray-600 font-semibold border-b pb-2 mb-4">Backend Connection Status</h3>

@@ -12,7 +12,7 @@ export default function ProductsList({products, setPage, selectEntity, deletePro
     }, [products, searchTerm]);
 
     return (
-        <div className="space-y-5 w-236">
+        <div className="space-y-5">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-3xl font-extrabold text-gray-900">Product Catalog</h2>
                 <button onClick={() => {
@@ -31,7 +31,7 @@ export default function ProductsList({products, setPage, selectEntity, deletePro
                     placeholder="Search by product name or category..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full p-3 pl-10 text-gray-600 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 />
             </div>
 

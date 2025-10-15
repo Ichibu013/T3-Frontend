@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {CheckCircle} from "lucide-react";
+import {CheckCircle, X} from "lucide-react";
 // Reusable Form for Customer (Used for Add and Edit)
 export default function CustomerForm ({ initialData, onSave, onCancel, isNew = false }) {
   const [formData, setFormData] = useState(initialData || { name: '', email: '', phone: '', city: '' });
@@ -48,7 +48,7 @@ export default function CustomerForm ({ initialData, onSave, onCancel, isNew = f
         </div>
         <div className="flex justify-end space-x-3 pt-4">
           <button type="button" onClick={onCancel}
-            className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
+            className="flex items-center  px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-red-700 hover:bg-gray-50 transition">
             <X className="w-4 h-4 mr-2" /> Cancel
           </button>
           <button type="submit"

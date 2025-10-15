@@ -2,7 +2,7 @@ import {ArrowLeft,Pencil} from 'lucide-react';
 // 6. Product Detail Page (View) (Dynamic Page View 6)
 export default function ProductView({ product, setPage }) {
     return (
-        <div className="space-y-5 w-236">
+        <div className="space-y-5">
             <button onClick={() => setPage('products')} className="flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4">
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back to Products
             </button>
