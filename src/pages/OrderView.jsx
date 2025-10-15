@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-// 9. Order Detail Page (View) (Dynamic Page View 9)
+
 export default function OrderView ({ order, setPage, data }){
     const customer = data.customers.find(c => c.id === order.customerId);
 

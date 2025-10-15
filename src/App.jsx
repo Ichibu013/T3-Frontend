@@ -15,8 +15,7 @@ import Sidebar from './components/Sidebar';
 import SettingsPage from './pages/Settings';
 
 import useCRMData from './services/ApiCalls'
- 
-// --- MOCK DATA & UTILITIES (Simulating Backend/DB) ---
+import StatusMessage from "./components/StatusMessage.jsx";
 
 const App = () => {
 
@@ -34,7 +33,7 @@ const App = () => {
         setIsSidebarOpen(false);
     };
 
-    // 4. Customer Add/Edit Logic (Dynamic Page Views 4 & 10)
+    // 4. Customer Add/Edit Logic (Page Views 4 & 10)
     const handleCustomerSave = async (formData) => {
         if (currentPage === 'customer-add') {
             // CREATE Operation
@@ -51,7 +50,7 @@ const App = () => {
         }
     };
 
-    // 7. Product Add/Edit Logic (Dynamic Page Views 7)
+    // 7. Product Add/Edit Logic ( Page Views 7)
     const handleProductSave = async (formData) => {
         if (currentPage === 'product-add') {
             // CREATE Operation
@@ -130,6 +129,8 @@ const App = () => {
 
     return (
         <div className="flex h-screen bg-gray-100 font-sans antialiased">
+            {/* Status Message */}
+            <StatusMessage message={data.error} type="error" onClose={data.clearError} />
 
             {/* Mobile Sidebar Overlay */}
             <div
