@@ -1,5 +1,5 @@
 export default function NavItem({name, pageKey, icon: Icon, currentPage, navigateTo}) {
-    const isActive = currentPage === pageKey || currentPage.startsWith(pageKey.slice(0, -1)); // Highlight parent page
+    const isActive = currentPage === pageKey || currentPage.startsWith(pageKey); 
     return (
         <a
             href="#"

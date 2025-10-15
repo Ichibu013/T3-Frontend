@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Search, Pencil, Trash2 } from "lucide-react";
+import { Search, Pencil, Trash2, Plus } from "lucide-react";
 // 2. Customers List Page (Dynamic Page View 2)
 export default function CustomersList ({ customers, setPage, selectEntity, deleteCustomer }) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -49,7 +49,7 @@ export default function CustomersList ({ customers, setPage, selectEntity, delet
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{customer.id}</td>
                   <td 
                     className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 font-medium cursor-pointer hover:underline"
-                    onClick={() => { selectEntity(customer); setPage('customer-view'); }}
+                    onClick={() => setPage('customer-view', customer)}
                   >
                     {customer.name}
                   </td>
@@ -64,7 +64,7 @@ export default function CustomersList ({ customers, setPage, selectEntity, delet
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                    <button onClick={() => { selectEntity(customer); setPage('customer-edit'); }} className="text-indigo-600 hover:text-indigo-900">
+                    <button onClick={() => setPage('customer-edit', customer)} className="text-indigo-600 hover:text-indigo-900">
                       <Pencil className="w-4 h-4 inline" />
                     </button>
                     <button onClick={() => deleteCustomer(customer.id)} className="text-red-600 hover:text-red-900">

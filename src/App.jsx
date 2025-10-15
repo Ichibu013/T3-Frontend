@@ -113,10 +113,12 @@ const App = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile menu
 
     // Helper function to navigate and set the selected entity for detail views
-    const navigateTo = (page, entity = null) => {
-        setSelectedEntity(entity);
+    const navigateTo = (page, entity) => {
+        if (entity) {
+            setSelectedEntity(entity);
+        }
         setCurrentPage(page);
-        setIsSidebarOpen(false); // Close sidebar on mobile after navigation
+        setIsSidebarOpen(false);
     };
 
     // 4. Customer Add/Edit Logic (Dynamic Page Views 4 & 10)
