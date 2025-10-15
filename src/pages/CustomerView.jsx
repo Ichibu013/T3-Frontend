@@ -1,6 +1,5 @@
 import {ArrowLeft, Pencil} from 'lucide-react';
-// 3. Customer Detail Page (View) (Dynamic Page View 3)
-export default function CustomerView({customer, setPage, updateCustomer, data}) {
+export default function CustomerView({customer, setPage, data}) {
     const customerOrders = data.getCustomerOrders(customer.id);
 
     return (

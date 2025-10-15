@@ -1,7 +1,6 @@
 import { useState, useMemo } from "react";
 import { Search, Pencil, Trash2, Plus } from "lucide-react";
-// 2. Customers List Page (Dynamic Page View 2)
-export default function CustomersList ({ customers, setPage, selectEntity, deleteCustomer }) {
+export default function CustomersList ({ customers, setPage, deleteCustomer }) {
     const [searchTerm, setSearchTerm] = useState('');
   
     const filteredCustomers = useMemo(() => {

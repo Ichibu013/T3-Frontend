@@ -1,4 +1,3 @@
-// 8. Orders List Page (Dynamic Page View 8)
 export default function OrdersList ({ orders, setPage, selectEntity }){
     return (
         <div className="space-y-5">
