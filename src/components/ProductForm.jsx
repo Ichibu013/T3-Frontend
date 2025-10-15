@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {CheckCircle} from "lucide-react";
 // Reusable Component for Product Form
 export default function ProductForm ({ initialData, onSave, onCancel, isNew = false }){
     const [formData, setFormData] = useState(initialData || { name: '', category: '', price: 0.00, stock: 0 });

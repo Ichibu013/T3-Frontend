@@ -1,3 +1,4 @@
+import {ArrowLeft,Pencil} from 'lucide-react';
 // 6. Product Detail Page (View) (Dynamic Page View 6)
 export default function ProductView({ product, setPage }) {
     return (

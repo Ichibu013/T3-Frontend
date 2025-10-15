@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Search, Pencil, Trash2 } from "lucide-react";
 // 2. Customers List Page (Dynamic Page View 2)
 export default function CustomersList ({ customers, setPage, selectEntity, deleteCustomer }) {
     const [searchTerm, setSearchTerm] = useState('');

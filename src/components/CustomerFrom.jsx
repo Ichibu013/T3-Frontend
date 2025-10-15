@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {CheckCircle} from "lucide-react";
 // Reusable Form for Customer (Used for Add and Edit)
 export default function CustomerForm ({ initialData, onSave, onCancel, isNew = false }) {
   const [formData, setFormData] = useState(initialData || { name: '', email: '', phone: '', city: '' });
