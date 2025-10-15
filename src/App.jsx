@@ -14,6 +14,8 @@ import OrderView from './pages/OrderView';
 import Sidebar from './components/Sidebar';
 import SettingsPage from './pages/Settings';
 
+import useCRMData from './services/ApiCalls'
+ 
 // --- MOCK DATA & UTILITIES (Simulating Backend/DB) ---
 
 const initialCustomers = [
@@ -37,76 +39,73 @@ const initialOrders = [
 ];
 
 // Custom hook to simulate API interaction and state management
-const useCRMData = () => {
-    const [customers, setCustomers] = useState(initialCustomers);
-    const [products, setProducts] = useState(initialProducts);
-    const [orders, setOrders] = useState(initialOrders);
-    const [lastId, setLastId] = useState(304); // Next order ID
+// const useCRMData = () => {
+//     const [customers, setCustomers] = useState(initialCustomers);
+//     const [products, setProducts] = useState(initialProducts);
+//     const [orders, setOrders] = useState(initialOrders);
+//     const [lastId, setLastId] = useState(304); // Next order ID
 
-    // Simulates fetching data on load (READ operation)
-    useEffect(() => {
-        // In a real app, this would be a fetch call to Spring Boot API
-        console.log("Simulating initial data fetch from Spring Boot...");
-    }, []);
+//     // Simulates fetching data on load (READ operation)
+//     useEffect(() => {
+//         // In a real app, this would be a fetch call to Spring Boot API
+//         console.log("Simulating initial data fetch from Spring Boot...");
+//     }, []);
 
-    // Customer CRUD Operations
-    const addCustomer = useCallback((newCustomer) => {
-        const nextId = customers.reduce((max, c) => Math.max(max, c.id), 100) + 1;
-        const customerWithId = { ...newCustomer, id: nextId, totalOrders: 0, status: 'Active' };
-        setCustomers((prev) => [...prev, customerWithId]);
-        return customerWithId;
-    }, [customers]);
+//     // Customer CRUD Operations
+//     const addCustomer = useCallback((newCustomer) => {
+//         const nextId = customers.reduce((max, c) => Math.max(max, c.id), 100) + 1;
+//         const customerWithId = { ...newCustomer, id: nextId, totalOrders: 0, status: 'Active' };
+//         setCustomers((prev) => [...prev, customerWithId]);
+//         return customerWithId;
+//     }, [customers]);
 
-    const updateCustomer = useCallback((id, updatedData) => {
-        setCustomers((prev) =>
-            prev.map((c) => (c.id === id ? { ...c, ...updatedData } : c))
-        );
-    }, []);
+//     const updateCustomer = useCallback((id, updatedData) => {
+//         setCustomers((prev) =>
+//             prev.map((c) => (c.id === id ? { ...c, ...updatedData } : c))
+//         );
+//     }, []);
 
-    const deleteCustomer = useCallback((id) => {
-        setCustomers((prev) => prev.filter((c) => c.id !== id));
-        // Also simulate deleting related orders (not fully implemented here for brevity)
-    }, []);
+//     const deleteCustomer = useCallback((id) => {
+//         setCustomers((prev) => prev.filter((c) => c.id !== id));
+//         // Also simulate deleting related orders (not fully implemented here for brevity)
+//     }, []);
 
-    // Product CRUD Operations
-    const addProduct = useCallback((newProduct) => {
-        const nextId = products.reduce((max, p) => Math.max(max, p.id), 200) + 1;
-        const productWithId = { ...newProduct, id: nextId };
-        setProducts((prev) => [...prev, productWithId]);
-        return productWithId;
-    }, [products]);
+//     // Product CRUD Operations
+//     const addProduct = useCallback((newProduct) => {
+//         const nextId = products.reduce((max, p) => Math.max(max, p.id), 200) + 1;
+//         const productWithId = { ...newProduct, id: nextId };
+//         setProducts((prev) => [...prev, productWithId]);
+//         return productWithId;
+//     }, [products]);
 
-    const updateProduct = useCallback((id, updatedData) => {
-        setProducts((prev) =>
-            prev.map((p) => (p.id === id ? { ...p, ...updatedData } : p))
-        );
-    }, []);
+//     const updateProduct = useCallback((id, updatedData) => {
+//         setProducts((prev) =>
+//             prev.map((p) => (p.id === id ? { ...p, ...updatedData } : p))
+//         );
+//     }, []);
 
-    const deleteProduct = useCallback((id) => {
-        setProducts((prev) => prev.filter((p) => p.id !== id));
-    }, []);
+//     const deleteProduct = useCallback((id) => {
+//         setProducts((prev) => prev.filter((p) => p.id !== id));
+//     }, []);
 
-    // Order READ Operations
-    const getCustomerOrders = useCallback((customerId) => {
-        return orders.filter(o => o.customerId === customerId);
-    }, [orders]);
+//     // Order READ Operations
+//     const getCustomerOrders = useCallback((customerId) => {
+//         return orders.filter(o => o.customerId === customerId);
+//     }, [orders]);
 
-    return {
-        customers, products, orders,
-        addCustomer, updateCustomer, deleteCustomer,
-        addProduct, updateProduct, deleteProduct,
-        getCustomerOrders,
-        loading: false // Mock loading state
-    };
-};
+//     return {
+//         customers, products, orders,
+//         addCustomer, updateCustomer, deleteCustomer,
+//         addProduct, updateProduct, deleteProduct,
+//         getCustomerOrders,
+//         loading: false // Mock loading state
+//     };
+// };
 
-// --- COMPONENTS ---
 
-// 1. Dashboard Page
-// Reusable Form for Customer (Used for Add and Edit)
-// 2. Customers List Page (Dynamic Page View 2)
 
 const App = () => {
+
     const data = useCRMData();
     const [currentPage, setCurrentPage] = useState('dashboard');
     const [selectedEntity, setSelectedEntity] = useState(null);
@@ -151,7 +150,7 @@ const App = () => {
     // Dynamic Content Renderer
     const renderContent = () => {
         if (data.loading) {
-            return <div className="text-center p-10 text-xl text-gray-500">Loading data from Spring Boot (Simulated)...</div>;
+            return <div className="text-center p-10 text-xl text-gray-500">Loading data from MySQL...</div>;
         }
         switch (currentPage) {
             // 1. Dashboard (Dynamic Page View 1)
