@@ -18,92 +18,6 @@ import useCRMData from './services/ApiCalls'
  
 // --- MOCK DATA & UTILITIES (Simulating Backend/DB) ---
 
-const initialCustomers = [
-    { id: 101, name: 'Alice Johnson', email: 'alice@corp.com', phone: '555-0101', city: 'New York', status: 'Active', totalOrders: 5 },
-    { id: 102, name: 'Bob Smith', email: 'bob@tech.com', phone: '555-0102', city: 'San Francisco', status: 'Lead', totalOrders: 0 },
-    { id: 103, name: 'Charlie Davis', email: 'charlie@biz.com', phone: '555-0103', city: 'London', status: 'Active', totalOrders: 12 },
-    { id: 104, name: 'Diana King', email: 'diana@consult.com', phone: '555-0104', city: 'Seattle', status: 'Inactive', totalOrders: 2 },
-];
-
-const initialProducts = [
-    { id: 201, name: 'Enterprise SSD', category: 'Hardware', price: 299.99, stock: 150 },
-    { id: 202, name: 'Cloud Service Sub', category: 'Software', price: 49.99, stock: 999 },
-    { id: 203, name: '4K Monitor 32"', category: 'Hardware', price: 450.00, stock: 55 },
-    { id: 204, name: 'Security Suite Pro', category: 'Software', price: 99.99, stock: 300 },
-];
-
-const initialOrders = [
-    { id: 301, customerId: 101, customerName: 'Alice Johnson', date: '2024-09-15', total: 349.98, status: 'Shipped', items: [{ productId: 201, quantity: 1, price: 299.99 }] },
-    { id: 302, customerId: 103, customerName: 'Charlie Davis', date: '2024-09-14', total: 99.99, status: 'Processing', items: [{ productId: 204, quantity: 1, price: 99.99 }] },
-    { id: 303, customerId: 104, customerName: 'Diana King', date: '2024-09-12', total: 450.00, status: 'Delivered', items: [{ productId: 203, quantity: 1, price: 450.00 }] },
-];
-
-// Custom hook to simulate API interaction and state management
-// const useCRMData = () => {
-//     const [customers, setCustomers] = useState(initialCustomers);
-//     const [products, setProducts] = useState(initialProducts);
-//     const [orders, setOrders] = useState(initialOrders);
-//     const [lastId, setLastId] = useState(304); // Next order ID
-
-//     // Simulates fetching data on load (READ operation)
-//     useEffect(() => {
-//         // In a real app, this would be a fetch call to Spring Boot API
-//         console.log("Simulating initial data fetch from Spring Boot...");
-//     }, []);
-
-//     // Customer CRUD Operations
-//     const addCustomer = useCallback((newCustomer) => {
-//         const nextId = customers.reduce((max, c) => Math.max(max, c.id), 100) + 1;
-//         const customerWithId = { ...newCustomer, id: nextId, totalOrders: 0, status: 'Active' };
-//         setCustomers((prev) => [...prev, customerWithId]);
-//         return customerWithId;
-//     }, [customers]);
-
-//     const updateCustomer = useCallback((id, updatedData) => {
-//         setCustomers((prev) =>
-//             prev.map((c) => (c.id === id ? { ...c, ...updatedData } : c))
-//         );
-//     }, []);
-
-//     const deleteCustomer = useCallback((id) => {
-//         setCustomers((prev) => prev.filter((c) => c.id !== id));
-//         // Also simulate deleting related orders (not fully implemented here for brevity)
-//     }, []);
-
-//     // Product CRUD Operations
-//     const addProduct = useCallback((newProduct) => {
-//         const nextId = products.reduce((max, p) => Math.max(max, p.id), 200) + 1;
-//         const productWithId = { ...newProduct, id: nextId };
-//         setProducts((prev) => [...prev, productWithId]);
-//         return productWithId;
-//     }, [products]);
-
-//     const updateProduct = useCallback((id, updatedData) => {
-//         setProducts((prev) =>
-//             prev.map((p) => (p.id === id ? { ...p, ...updatedData } : p))
-//         );
-//     }, []);
-
-//     const deleteProduct = useCallback((id) => {
-//         setProducts((prev) => prev.filter((p) => p.id !== id));
-//     }, []);
-
-//     // Order READ Operations
-//     const getCustomerOrders = useCallback((customerId) => {
-//         return orders.filter(o => o.customerId === customerId);
-//     }, [orders]);
-
-//     return {
-//         customers, products, orders,
-//         addCustomer, updateCustomer, deleteCustomer,
-//         addProduct, updateProduct, deleteProduct,
-//         getCustomerOrders,
-//         loading: false // Mock loading state
-//     };
-// };
-
-
-
 const App = () => {
 
     const data = useCRMData();
@@ -121,27 +35,35 @@ const App = () => {
     };
 
     // 4. Customer Add/Edit Logic (Dynamic Page Views 4 & 10)
-    const handleCustomerSave = (formData) => {
+    const handleCustomerSave = async (formData) => {
         if (currentPage === 'customer-add') {
             // CREATE Operation
-            const newCustomer = data.addCustomer(formData);
-            navigateTo('customer-view', newCustomer);
+            const newCustomer = await data.addCustomer(formData);
+            if (newCustomer) {
+                navigateTo('customer-view', newCustomer);
+            } else {
+                navigateTo('customers');
+            }
         } else if (currentPage === 'customer-edit') {
             // UPDATE Operation
-            data.updateCustomer(selectedEntity.id, formData);
+            await data.updateCustomer(selectedEntity.id, formData);
             navigateTo('customer-view', { ...selectedEntity, ...formData });
         }
     };
 
     // 7. Product Add/Edit Logic (Dynamic Page Views 7)
-    const handleProductSave = (formData) => {
+    const handleProductSave = async (formData) => {
         if (currentPage === 'product-add') {
             // CREATE Operation
-            const newProduct = data.addProduct(formData);
-            navigateTo('product-view', newProduct);
+            const newProduct = await data.addProduct(formData);
+            if (newProduct) {
+                navigateTo('product-view', newProduct);
+            } else {
+                navigateTo('products');
+            }
         } else if (currentPage === 'product-edit') {
             // UPDATE Operation
-            data.updateProduct(selectedEntity.id, formData);
+            await data.updateProduct(selectedEntity.id, formData);
             navigateTo('product-view', { ...selectedEntity, ...formData });
         }
     };
