@@ -2,7 +2,8 @@ import { useState } from "react";
 import {CheckCircle, X} from "lucide-react";
 // Reusable Form for Customer (Used for Add and Edit)
 export default function CustomerForm ({ initialData, onSave, onCancel, isNew = false }) {
-  const [formData, setFormData] = useState(initialData || { name: '', email: '', phone: '', city: '' });
+  const defaultData =  { name: '', email: '', phone: '', city: '' };
+  const [formData, setFormData] = useState(initialData || defaultData);
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -20,7 +21,7 @@ export default function CustomerForm ({ initialData, onSave, onCancel, isNew = f
   };
 
   const LABEL_STYLE = "block text-sm font-medium text-gray-700";
-  const INPUT_STYLE = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
+  const INPUT_STYLE = "mt-1 block w-full text-gray-600 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg max-w-lg mx-auto">
       <h3 className="text-2xl font-bold mb-6 text-gray-800">{isNew ? 'Add New Customer' : `Edit Customer: ${initialData.name}`}</h3>

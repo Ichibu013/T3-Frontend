@@ -18,13 +18,13 @@ export default function ProductView({ product, setPage }) {
 
             <div className="bg-white p-6 rounded-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <h3 className="text-xl font-semibold border-b pb-2 mb-4">Product Specs</h3>
+                    <h3 className="text-xl font-semibold border-b pb-2 mb-4 text-gray-600">Product Specs</h3>
                     <p className="text-gray-700"><span className="font-medium">ID:</span> {product.id}</p>
                     <p className="text-gray-700"><span className="font-medium">Category:</span> {product.category}</p>
                     <p className="text-gray-700"><span className="font-medium">Price:</span> <span className="text-green-600 font-bold text-lg">${product.price.toFixed(2)}</span></p>
                 </div>
                 <div>
-                    <h3 className="text-xl font-semibold border-b pb-2 mb-4">Inventory</h3>
+                    <h3 className="text-xl font-semibold border-b pb-2 mb-4 text-gray-600">Inventory</h3>
                     <p className="text-gray-700"><span className="font-medium">In Stock:</span> {product.stock}</p>
                     <p className={`text-gray-700 ${product.stock < 20 ? 'text-red-600 font-bold' : ''}`}><span className="font-medium">Alert:</span> {product.stock < 20 ? 'Low Stock Warning!' : 'Stock is healthy'}</p>
                 </div>
