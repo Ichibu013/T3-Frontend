@@ -1,8 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 
 export default function OrderView ({ order, setPage, data }){
-    const customer = data.customers.find(c => c.id === order.customerId);
-
+    data.customers.find(c => c.id === order.customerId);
     return (
         <div className="space-y-5 w-236">
             <button onClick={() => setPage('orders')} className="flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4">
@@ -13,7 +12,7 @@ export default function OrderView ({ order, setPage, data }){
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Order Summary */}
                 <div className="md:col-span-1 bg-white p-6 rounded-xl shadow-lg space-y-3">
-                    <h3 className="text-xl font-semibold border-b pb-2 mb-4">Summary</h3>
+                    <h3 className="text-xl font-semibold border-b pb-2 mb-4 text-gray-700">Summary</h3>
                     <p className="text-gray-700"><span className="font-medium">Date:</span> {order.date}</p>
                     <p className="text-gray-700"><span className="font-medium">Total:</span> <span className="text-green-600 font-bold">${order.total.toFixed(2)}</span></p>
                     <p className="text-gray-700"><span className="font-medium">Status:</span> 
@@ -26,7 +25,7 @@ export default function OrderView ({ order, setPage, data }){
                 
                 {/* Items List */}
                 <div className="md:col-span-2 bg-white p-6 rounded-xl shadow-lg">
-                    <h3 className="text-xl font-semibold border-b pb-2 mb-4">Items Ordered ({order.items.length})</h3>
+                    <h3 className="text-xl font-semibold border-b pb-2 mb-4 text-gray-700">Items Ordered ({order.items.length})</h3>
                     <ul className="space-y-3">
                         {order.items.map((item, index) => {
                             const product = data.products.find(p => p.id === item.productId);

@@ -174,7 +174,7 @@ const App = () => {
                 </header>
 
                 {/* Page Content */}
-                <div className="flex-1 overflow-x-hidden overflow-y-auto px-4 py-2 sm:p-6 lg:p-8 w-256">
+                <div className="flex-1 overflow-x-hidden overflow-y-auto px-4 py-2 sm:p-6 lg:p-8 w-320">
                     {renderContent()}
                 </div>
             </main>
